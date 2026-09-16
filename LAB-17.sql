@@ -59,26 +59,115 @@ WHERE SALARY < 10000;
 SELECT * FROM employees_salary_below_10000;
 --11. Create a view Server_Dept that displays Server department employees only.
 CREATE VIEW Server_Dept AS
+SELECT * FROM EMPLOYEE
+WHERE DEPARTMENT = 'SERVER';
 
+SELECT * FROM Server_Dept;
 --12. Insert a new record into Employee_Basic view. (111, MEET, SURAT)
+CREATE VIEW Employee_Basic_VIEW AS
+SELECT EID,FIRSTNAME,CITY FROM EMPLOYEE
+WHERE EID = 111;
+
+SELECT * FROM Employee_Basic_VIEW;
 --13. Update the department of DEEP from ADMIN to IT in Employee_NameDeptSalary view.
+UPDATE Employee_NameDeptSalary
+SET DEPARTMENT = 'IT'
+WHERE FIRSTNAME = 'DEEP';
 --14. Delete an employee whose EID is 107 from Employee_Basic view.
+DELETE Employee_Basic_VIEW
+WHERE EID = 107;
 --15. Drop IT_Employees view from the database.
+DROP IT_Employees;
 --Part – B:
 --16. Create a view Admin_Employees that displays ADMIN department employees only.
+CREATE VIEW Admin_Employees AS
+SELECT * FROM EMPLOYEE
+WHERE DEPARTMENT = 'ADMIN';
+
+SELECT * FROM Admin_Employees;
 --17. Create a view Female_Employees that displays female employee data only.
+CREATE VIEW Female_Employees AS
+SELECT * FROM EMPLOYEE
+WHERE GENDER = 'FEMALE';
+
+SELECT * FROM Female_Employees;
 --18. Create a view Male_Employees that displays male employee data only.
+CREATE VIEW MALE_EMPLOYEES AS
+SELECT * FROM EMPLOYEE
+WHERE GENDER = 'MALE';
+
+SELECT * FROM MALE_EMPLOYEES;
 --19. Create a view Rajkot_Employees that displays employees from Rajkot city only.
+CREATE VIEW Rajkot_Employees AS
+SELECT * FROM EMPLOYEE
+WHERE CITY = 'RAJKOT';
+
+SELECT * FROM Rajkot_Employees;
 --20. Create a view Ahmedabad_Employees that displays employees from Ahmedabad city only.
+CREATE VIEW Ahmedabad_Employees AS
+SELECT * FROM EMPLOYEE
+WHERE CITY = 'Ahmedabad';
+
+SELECT * FROM Ahmedabad_Employees;
 --21. Create a view Salary_Between that displays employees whose salary is between 10000 and 14000.
+CREATE VIEW Salary_Between AS
+SELECT * FROM EMPLOYEE
+WHERE SALARY BETWEEN 10000 AND 14000;
+
+SELECT * FROM Salary_Between;
 --22. Create a view Recent_Employees that displays employees joined after 2023.
+CREATE VIEW Recent_Employees AS
+SELECT * FROM EMPLOYEE
+WHERE JOININGYEAR>2023;
+
+SELECT * FROM Recent_Employees;
 --23. Create a view Old_Employees that displays employees joined before 2023.
+CREATE VIEW Old_Employees AS
+SELECT * FROM EMPLOYEE
+WHERE JOININGYEAR<2023;
+
+SELECT * FROM Old_Employees;
 --24. Create a view Employees_Start_R that displays employees whose first name starts with R.
+CREATE VIEW  Employees_Start_R AS
+SELECT * FROM EMPLOYEE
+WHERE FIRSTNAME LIKE 'R%';
+
+SELECT * FROM Employees_Start_R;
 --25. Create a view Employees_End_A that displays employees whose first name ends with A.
+CREATE VIEW  first_name_ends_with_A AS
+SELECT * FROM EMPLOYEE
+WHERE FIRSTNAME LIKE '%A';
+
+SELECT * FROM first_name_ends_with_A;
 --Part – C:
 --26. Create a view Employees_NameContains_H that displays employees whose first name contains H.
+CREATE VIEW Employees_NameContains_H AS
+SELECT * FROM EMPLOYEE
+WHERE FIRSTNAME LIKE '%H%';
+
+SELECT * FROM Employees_NameContains_H;
 --27. Create a view for the employees whose first name contains vowels.
+CREATE VIEW Employees_name_contains_vowels AS
+SELECT * FROM EMPLOYEE
+WHERE FIRSTNAME LIKE '%[A,E,I,O,U]%';
+
+SELECT * FROM Employees_name_contains_vowels;
 --28. Create a view FourLetter_Name having EID, FirstName and Department columns in which FirstName
 --consists of four letters.
+CREATE VIEW Employees_name_contains_FOUR AS
+SELECT * FROM EMPLOYEE
+WHERE FIRSTNAME LIKE '____';
+
+SELECT * FROM Employees_name_contains_FOUR;
 --29. Create a view for the employees whose name starts with M and ends with N.
+CREATE VIEW Employees_name_contains_SMN AS
+SELECT * FROM EMPLOYEE
+WHERE FIRSTNAME LIKE 'M%N';
+
+SELECT * FROM Employees_name_contains_SMN;
 --30. Create a view Transport_Dept that displays Transport department employees only.
+CREATE VIEW Admin_Employees AS
+SELECT * FROM EMPLOYEE
+WHERE DEPARTMENT = 'ADMIN';
+
+SELECT * FROM Admin_Employees;

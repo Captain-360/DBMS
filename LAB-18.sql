@@ -22,8 +22,13 @@ SELECT * FROM STUDENT
 WHERE SPI < (SELECT SPI FROM STUDENT
 WHERE SNAME = 'RIYA')
 --7. Display the students who belong to the same branch as KRUNAL.
-
+SELECT * FROM STUDENT
+WHERE BRANCH = (SELECT BRANCH FROM STUDENT
+WHERE SNAME = 'KRUNAL');
 --8. Display the students whose branch is different from HETVI.
+SELECT * FROM STUDENT
+WHERE BRANCH NOT IN (SELECT BRANCH FROM STUDENT
+WHERE SNAME = 'HETVI');
 --9. Display the second highest SPI from RESULT table.
 --10. Display the second lowest SPI from RESULT table.
 --11. Display the names of students whose SPI is above branch-wise average SPI.

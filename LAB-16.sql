@@ -1,0 +1,24 @@
+--From the table STADIUM, TEAM and PLAYER perform the following queries:
+--Part – A:
+--1. Display players who belong to teams located in ‘Mumbai’.
+--2. Display all teams and players.
+--3. Display players along with team wins and stadium city.
+--4. Display team name and number of players in each team.
+--5. Display team name, coach, and number of bowlers in each team.
+--6. Display team name with count of batsmen, bowlers, and all-rounders.
+--7. Display stadiums where teams have won more than 10 matches.
+--8. Display team name and number of players whose matches played is greater than 25.
+--9. Display team name and total number of players having jersey number greater than 30.
+--10. Display team name and total matches played by its players.
+--Part – B:
+--11. Display stadium city and total number of teams in each city.
+--12. Display team name and average matches played by players in each team.
+--13. Display team name and maximum matches played by any player in each team.
+--14. Display team name and minimum matches played by any player in each team.
+--15. Display stadium name and total number of players playing under teams of that stadium.
+--Part – C:
+--16. Display teams having more all-rounders than bowlers.
+--17. Display teams where difference between max and min player matches is greater than 5.
+--18. Display stadium city and total wins of teams in that city.
+--19. Display team name and total number of players for each role (grouped by role).
+--20. Display team name and total number of players whose name starts with ‘A’

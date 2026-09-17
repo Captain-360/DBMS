@@ -30,17 +30,72 @@ SELECT * FROM STUDENT
 WHERE BRANCH NOT IN (SELECT BRANCH FROM STUDENT
 WHERE SNAME = 'HETVI');
 --9. Display the second highest SPI from RESULT table.
+SELECT MAX(SPI) FROM STUDENT
+WHERE SPI<(SELECT MAX(SPI) FROM STUDENT);
 --10. Display the second lowest SPI from RESULT table.
+SELECT MIN(SPI) FROM STUDENT
+WHERE SPI>(SELECT MIN(SPI) FROM STUDENT);
 --11. Display the names of students whose SPI is above branch-wise average SPI.
+SELECT SNAME FROM STUDENT S1
+WHERE SPI > (SELECT AVG(SPI) FROM STUDENT S2 WHERE S1.BRANCH=S2.BRANCH);
 --12. Display the branch having maximum average SPI.
+SELECT BRANCH FROM STUDENT 
+GROUP BY BRANCH
+HAVING AVG(SPI) >= ALL(SELECT AVG(SPI) FROM STUDENT GROUP BY BRANCH);
 --13. Display the branch having minimum average SPI.
+SELECT BRANCH FROM STUDENT 
+GROUP BY BRANCH
+HAVING AVG(SPI) <= ALL(SELECT AVG(SPI) FROM STUDENT GROUP BY BRANCH);
 --From the table STUDENT_INFO and RESULT perform the following queries:
 --Part – B:
+SELECT * FROM STUDENT_INFO;
+SELECT * FROM RESULT;
 --14. Display the students whose SPI is greater than all students of ME branch.
+SELECT NAME FROM STUDENT_INFO S
+JOIN 
+RESULT R
+ON S.RNO = R.RNO
+WHERE R.SPI>ALL(SELECT R.SPI FROM STUDENT_INFO S 
+JOIN 
+RESULT R
+ON S.RNO=R.RNO
+WHERE BRANCH = 'ME');
 --15. Display the students whose SPI is less than any student of ME branch.
+SELECT NAME FROM STUDENT_INFO S
+JOIN
+RESULT R
+ON S.RNO=R.RNO
+WHERE SPI < ALL(SELECT R.SPI FROM STUDENT_INFO S
+JOIN
+RESULT R
+ON S.RNO=R.RNO
+WHERE S.BRANCH='ME');
 --16. Display the student details whose SPI is not equal to any SPI of EC branch students.
+SELECT * FROM STUDENT_INFO S
+JOIN
+RESULT R
+ON S.RNO = R.RNO
+WHERE SPI NOT IN (SELECT R.SPI FROM RESULT R
+JOIN
+STUDENT_INFO S
+ON S.RNO=R.RNO
+WHERE S.BRANCH='EC');
 --17. Display the names of students who scored higher SPI than student of RNO 103.
+SELECT * FROM STUDENT_INFO S
+JOIN 
+RESULT R
+ON S.RNO=R.RNO
+WHERE SPI > ALL(SELECT R.SPI FROM RESULT R
+JOIN 
+STUDENT_INFO S
+ON S.RNO=R.RNO
+WHERE S.RNO = 103);
 --18. Display the students whose SPI is greater than average SPI of their own branch.
+SELECT * FROM STUDENT_INFO S
+JOIN
+RESULT R
+ON S.RNO=R.RNO
+
 --19. Display the students whose SPI is greater than the average SPI of CE branch but greater than the
 --maximum SPI of ME branch.
 --20. Display the branch names whose average SPI is greater than the overall average SPI.

@@ -95,10 +95,33 @@ SELECT * FROM STUDENT_INFO S
 JOIN
 RESULT R
 ON S.RNO=R.RNO
-
+WHERE SPI > ALL(SELECT AVG(SPI) FROM RESULT R
+JOIN
+STUDENT_INFO S
+ON S.RNO=R.RNO
+GROUP BY S.BRANCH)
 --19. Display the students whose SPI is greater than the average SPI of CE branch but greater than the
 --maximum SPI of ME branch.
+SELECT * FROM STUDENT_INFO S
+JOIN
+RESULT R
+ON S.RNO=R.RNO
+WHERE SPI > (SELECT AVG(SPI) FROM RESULT R
+JOIN
+STUDENT_INFO S
+ON S.RNO=R.RNO
+WHERE S.BRANCH = 'CE') AND
+SPI > (SELECT MAX(SPI) FROM RESULT R
+JOIN
+STUDENT_INFO S
+ON S.RNO=R.RNO
+WHERE S.BRANCH = 'ME');
 --20. Display the branch names whose average SPI is greater than the overall average SPI.
+SELECT * FROM STUDENT_INFO S
+JOIN 
+RESULT R
+ON S.RNO=R.RNO
+WHERE 
 --21. Display the students who have maximum SPI in their respective branch.
 --22. Display the students whose SPI is greater than their average SPI of their branch and greater than overall
 --average SPI.
